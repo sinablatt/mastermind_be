@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-10-24T15:17:25+0200",
+    date = "2020-10-31T10:11:57+0100",
     comments = "version: 1.3.0.Final, compiler: javac, environment: Java 12.0.2 (Oracle Corporation)"
 )
 @Component
@@ -128,6 +128,34 @@ public class UserMapperImpl implements UserMapper {
         return list;
     }
 
+    @Override
+    public List<UserDTO> toUserDTO(List<User> user) {
+        if ( user == null ) {
+            return null;
+        }
+
+        List<UserDTO> list = new ArrayList<UserDTO>( user.size() );
+        for ( User user1 : user ) {
+            list.add( userToUserDTO( user1 ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<User> fromUserDTO(List<UserDTO> usersDto) {
+        if ( usersDto == null ) {
+            return null;
+        }
+
+        List<User> list = new ArrayList<User>( usersDto.size() );
+        for ( UserDTO userDTO : usersDto ) {
+            list.add( fromDTO( userDTO ) );
+        }
+
+        return list;
+    }
+
     protected withPass userTowithPass(User user) {
         if ( user == null ) {
             return null;
@@ -140,5 +168,18 @@ public class UserMapperImpl implements UserMapper {
         withPass.setPassword( user.getPassword() );
 
         return withPass;
+    }
+
+    protected UserDTO userToUserDTO(User user) {
+        if ( user == null ) {
+            return null;
+        }
+
+        UserDTO userDTO = new UserDTO();
+
+        userDTO.setId( user.getId() );
+        userDTO.setUsername( user.getUsername() );
+
+        return userDTO;
     }
 }

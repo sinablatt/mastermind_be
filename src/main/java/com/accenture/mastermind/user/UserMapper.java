@@ -32,4 +32,10 @@ public interface UserMapper {
 
   @Named("fromWithPasswords")
   List<User> fromWithPasswords(List<UserDTO.withPass> usersDto);
+
+  @Named("toUserDTO")
+  List<UserDTO> toUserDTO(List<User> user);
+
+  @Named("fromUserDTO")
+  List<User> fromUserDTO(List<UserDTO> usersDto);
 }

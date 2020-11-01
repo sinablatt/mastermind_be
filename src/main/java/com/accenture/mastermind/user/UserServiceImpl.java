@@ -7,7 +7,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -39,6 +41,10 @@ public class UserServiceImpl implements UserService {
     return userRepository.findByUsername(username);
   }
 
+  @Override
+  public List<User> findAll(){
+    return userRepository.findAll();
+  }
 
   @Override
   public User save(User user) {

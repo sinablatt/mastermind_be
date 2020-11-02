@@ -28,7 +28,7 @@ public class UserController {
     return new ResponseEntity<>(userMapper.toUserDTO(userService.findAll()), HttpStatus.OK);
   }
 
-  @PostMapping({"/signin/", "/signin"})
+  @PostMapping({"/signup/", "/signup"})
   public @ResponseBody
   ResponseEntity<UserDTO> create(@RequestBody UserDTO.withPass newUser) {
     User user = userMapper.fromWithPassword(newUser);
